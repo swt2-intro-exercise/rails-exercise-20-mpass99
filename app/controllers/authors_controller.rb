@@ -14,10 +14,6 @@ class AuthorsController < ApplicationController
     redirect_to @author
   end
 
-  def name
-    @author.first_name + ' ' + @author.last_name
-  end
-
   private
     def authors_params
       params.require(:author).permit(:first_name, :last_name, :homepage)
