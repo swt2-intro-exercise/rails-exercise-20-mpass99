@@ -14,6 +14,10 @@ class AuthorsController < ApplicationController
     redirect_to @author
   end
 
+  def index
+    @authors = Author.all
+  end
+
   private
     def authors_params
       params.require(:author).permit(:first_name, :last_name, :homepage)
