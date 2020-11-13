@@ -12,7 +12,7 @@ describe "authors index page", type: :feature do
     expect(page).to have_link 'New', href: new_author_path
   end
 
-  it "should have a table with actors in it" do
+  it "should have a table" do
     visit authors_path
 
     expect(page).to have_table
