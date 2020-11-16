@@ -6,4 +6,9 @@ describe "New author model", type: :model do
     expect(author.last_name).to eq("Turing")
     expect(author.name).to eq("Alan Turing")
   end
+
+  it "should not be valid without las_name" do
+    author = Author.new(first_name: "Alan", last_name: "")
+    expect(author).to_not be_valid
+  end
 end

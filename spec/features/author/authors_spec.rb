@@ -19,12 +19,3 @@ describe "authors index page", type: :feature do
   end
 
 end
-
-describe "validation", type: :controller do
-
-  it "should not be valid without las_name" do
-    author = Author.new(first_name: "Alan", last_name: "")
-    expect(author).to_not be_valid
-  end
-
-end
