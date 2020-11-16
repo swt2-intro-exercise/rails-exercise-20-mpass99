@@ -15,4 +15,14 @@ describe "New author page", type: :feature do
     expect(page).to have_field('author[homepage]')
   end
 
+  it "should display validation errors" do
+    visit new_author_path
+
+    fill_in 'author[first_name]', :with => "Alan"
+    fill_in 'author[last_name]', :with => ""
+    click_button 'commit'
+
+    expect(page).to have_selector(:id, 'error_explanation')
+  end
+
 end
