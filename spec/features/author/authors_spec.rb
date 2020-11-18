@@ -23,7 +23,17 @@ describe "authors index page", type: :feature do
     new_author = Author.create(first_name: "Alan", last_name: "Turing")
     visit authors_path
 
-    expect(page).to have_link 'Delete', href: edit_author_path(new_author.reload.id)
+    expect(page).to have_link 'Delete', href: author_path(new_author.reload.id)
+  end
+
+  it "can delete an author" do
+    new_author = Author.create(first_name: "Alan", last_name: "Turing")
+    count = Author.count
+    visit authors_path
+
+    click_link 'Delete'
+
+    expect(Author.count).to eq(count - 1)
   end
 
   it "should have a table" do
