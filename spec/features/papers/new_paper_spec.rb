@@ -1,28 +1,28 @@
 require 'rails_helper'
 
-describe "New author page", type: :feature do
+describe "New paper page", type: :feature do
 
-  "#{it "should render withour error" do
-    visit new_author_path
+  it "should render without error" do
+    visit new_paper_path
   end
 
-  it "should have text inputs for an author's first name, last name, and homepage" do
-    visit new_author_path
+  it "should have text inputs for a paper's title, venue, and year" do
+    visit new_paper_path
 
     # these are the standard names given to inputs by the form builder
-    expect(page).to have_field('author[first_name]')
-    expect(page).to have_field('author[last_name]')
-    expect(page).to have_field('author[homepage]')
+    expect(page).to have_field('paper[title]')
+    expect(page).to have_field('paper[venue]')
+    expect(page).to have_field('paper[year]')
   end
 
   it "should display validation errors" do
-    visit new_author_path
+    visit new_paper_path
 
-    fill_in 'author[first_name]', :with => "Alan"
-    fill_in 'author[last_name]', :with => ""
+    fill_in 'paper[venue]', :with => "Potsdam"
+    fill_in 'paper[title]', :with => ""
     click_button 'commit'
 
     expect(page).to have_selector(:id, 'error_explanation')
-  end}"
+  end
 
 end

@@ -6,40 +6,40 @@ describe "papers index page", type: :feature do
     visit papers_path
   end
 
-  "#{it "should have a link to create a new user" do
-    visit authors_path
+  it "should have a link to create a new paper" do
+    visit papers_path
 
-    expect(page).to have_link 'New', href: new_author_path
+    expect(page).to have_link 'New', href: new_paper_path
   end
 
-  it "should have a link to edit a user" do
-    new_author = Author.create(first_name: "Alan", last_name: "Turing")
-    visit authors_path
+  it "should have a link to edit a paper" do
+    new_paper = Paper.create(title: "Alan")
+    visit papers_path
 
-    expect(page).to have_link 'Edit', href: edit_author_path(new_author.reload.id)
+    expect(page).to have_link 'Edit', href: edit_paper_path(new_paper.reload.id)
   end
 
-  it "should have a link to delete a user" do
-    new_author = Author.create(first_name: "Alan", last_name: "Turing")
-    visit authors_path
+  it "should have a link to delete a paper" do
+    new_paper = Paper.create(title: "Alan")
+    visit papers_path
 
-    expect(page).to have_link 'Delete', href: author_path(new_author.reload.id)
+    expect(page).to have_link 'Destroy', href: paper_path(new_paper.reload.id)
   end
 
-  it "can delete an author" do
-    new_author = Author.create(first_name: "Alan", last_name: "Turing")
-    count = Author.count
-    visit authors_path
+  it "can delete an paper" do
+    new_paper = Paper.create(title: "Alan")
+    count = Paper.count
+    visit papers_path
 
-    click_link 'Delete'
+    click_link 'Destroy'
 
-    expect(Author.count).to eq(count - 1)
+    expect(Paper.count).to eq(count - 1)
   end
 
   it "should have a table" do
-    visit authors_path
+    visit papers_path
 
     expect(page).to have_table
-  end}"
+  end
 
 end
