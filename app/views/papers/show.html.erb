@@ -15,25 +15,27 @@
   <%= @paper.year %>
 </p>
 
-<h3>Authors</h3>
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Homepage</th>
-    <th></th>
-    <th></th>
-  </tr>
-
-  <% @paper.authors.each do |author| %>
+<% if @paper.authors.any? %>
+  <h3>Authors</h3>
+  <table>
     <tr>
-      <td><%= author.name %></td>
-      <td><%= author.homepage %></td>
-      <td><%= link_to 'Show', author_path(author) %></td>
-      <td><%= link_to 'Edit', edit_author_path(author) %></td>
-      <td><%= link_to 'Delete', author_path(author), method: :delete %></td>
+      <th>Name</th>
+      <th>Homepage</th>
+      <th></th>
+      <th></th>
     </tr>
-  <% end %>
-</table>
+
+    <% @paper.authors.each do |author| %>
+      <tr>
+        <td><%= author.name %></td>
+        <td><%= author.homepage %></td>
+        <td><%= link_to 'Show', author_path(author) %></td>
+        <td><%= link_to 'Edit', edit_author_path(author) %></td>
+        <td><%= link_to 'Delete', author_path(author), method: :delete %></td>
+      </tr>
+    <% end %>
+  </table>
+<% end %>
 
 <%= link_to 'Edit', edit_paper_path(@paper) %> |
 <%= link_to 'Back', papers_path %>
