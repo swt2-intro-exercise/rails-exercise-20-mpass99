@@ -3,12 +3,12 @@ require 'rails_helper'
 describe "Edit paper page", type: :feature do
 
   it "should render without error" do
-    paper = Paper.create(title: "MyPaper")
+    paper = Paper.create(title: "MyPaper", venue: "Potsdam", year: 2020)
     visit edit_paper_path(paper)
   end
 
   it "should have text inputs for an paper's title, venue, and year" do
-    paper = Paper.create(title: "Truing")
+    paper = Paper.create(title: "Truing", venue: "Potsdam", year: 2020)
     visit edit_paper_path(paper)
 
     # these are the standard names given to inputs by the form builder
@@ -18,7 +18,7 @@ describe "Edit paper page", type: :feature do
   end
 
   it "should display validation errors" do
-    paper = Paper.create(title: "Truing")
+    paper = Paper.create(title: "Truing", venue: "Potsdam", year: 2020)
     visit edit_paper_path(paper)
 
     fill_in 'paper[title]', :with => ""

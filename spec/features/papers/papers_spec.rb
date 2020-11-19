@@ -13,21 +13,21 @@ describe "papers index page", type: :feature do
   end
 
   it "should have a link to edit a paper" do
-    new_paper = Paper.create(title: "Alan")
+    new_paper = Paper.create(title: "Alan", venue: "Potsdam", year: 2020)
     visit papers_path
 
     expect(page).to have_link 'Edit', href: edit_paper_path(new_paper.reload.id)
   end
 
   it "should have a link to delete a paper" do
-    new_paper = Paper.create(title: "Alan")
+    new_paper = Paper.create(title: "Alan", venue: "Potsdam", year: 2020)
     visit papers_path
 
     expect(page).to have_link 'Destroy', href: paper_path(new_paper.reload.id)
   end
 
   it "can delete an paper" do
-    new_paper = Paper.create(title: "Alan")
+    new_paper = Paper.create(title: "Alan", venue: "Potsdam", year: 2020)
     count = Paper.count
     visit papers_path
 
